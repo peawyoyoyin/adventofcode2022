@@ -1,0 +1,4 @@
+inputs/**/*.txt
+!inputs/day0/*.txt
+**/build/
+.gradle
