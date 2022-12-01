@@ -1,8 +1,9 @@
 package solutions.day1
 
 import utils.InputReader
+import utils.measureAndLogTime
 
-fun main() {
+fun main() = measureAndLogTime {
     val lineSeparator = System.getProperty("line.separator")
     val inputs = InputReader.readInput("day1/input.txt")
         .trim()
