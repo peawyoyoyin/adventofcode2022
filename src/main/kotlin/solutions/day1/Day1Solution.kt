@@ -4,7 +4,7 @@ import utils.InputReader
 import utils.measureAndLogTime
 
 fun main() = measureAndLogTime {
-    val lineSeparator = System.getProperty("line.separator")
+    val lineSeparator = System.lineSeparator()
     val inputs = InputReader.readInput("day1/input.txt")
         .trim()
         .split("$lineSeparator$lineSeparator")
