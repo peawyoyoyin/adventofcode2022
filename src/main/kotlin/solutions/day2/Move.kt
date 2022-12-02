@@ -21,16 +21,14 @@ enum class Move(val moveScore: Int) {
             "A" -> Rock
             "B" -> Paper
             "C" -> Scissors
-            else -> { throw IllegalArgumentException("unknown move $char")
-            }
+            else -> { throw IllegalArgumentException("unknown move $char") }
         }
 
         fun parseByPart1Logic(char: String) = when (char) {
             "X" -> Rock
             "Y" -> Paper
             "Z" -> Scissors
-            else -> { throw IllegalArgumentException("unknown part 1 move $char")
-            }
+            else -> { throw IllegalArgumentException("unknown part 1 move $char") }
         }
     }
 
