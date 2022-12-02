@@ -11,11 +11,11 @@ fun main() = measureAndLogTime {
             // part 1
             lines
                 .sumOf { Round.parseByPart1Logic(it).calculatePlayerScore() }
-                .run { println("part 1 ans: $this") }
+                .let { println("part 1 ans: $it") }
 
             // part 2
             lines
                 .sumOf { Round.parseByPart2Logic(it).calculatePlayerScore() }
-                .run { println("part 2 ans: $this") }
+                .let { println("part 2 ans: $it") }
         }
 }
