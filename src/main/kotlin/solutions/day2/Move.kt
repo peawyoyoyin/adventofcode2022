@@ -8,13 +8,13 @@ enum class Move(val moveScore: Int) {
     companion object {
         // key wins value
         private val winningMoveMap = mapOf(
-            Pair(Rock, Paper),
-            Pair(Paper, Scissors),
-            Pair(Scissors, Rock)
+            Rock to Paper,
+            Paper to Scissors,
+            Scissors to Rock
         )
 
         private val losingMoveMap by lazy {
-            winningMoveMap.entries.associate { (key, value) -> Pair(value, key) }
+            winningMoveMap.entries.associate { (key, value) -> value to key }
         }
 
         fun parse(char: String) = when (char) {
