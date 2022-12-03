@@ -9,13 +9,10 @@ fun String.bisect(): Pair<String, String> {
     return Pair(substring(0, half), substring(half))
 }
 
-fun Char.priority(): Int {
-    if ('a'.code <= code && code <= 'z'.code) {
-        return (code - 'a'.code) + 1
-    } else if ('A'.code <= code && code <= 'Z'.code) {
-        return (code - 'A'.code) + 27
-    }
-    throw IllegalArgumentException("cannot find priority for character $this")
+fun Char.priority() = when (category) {
+    CharCategory.LOWERCASE_LETTER -> this - 'a' + 1
+    CharCategory.UPPERCASE_LETTER -> this - 'A' + 27
+    else -> throw IllegalArgumentException("cannot find priority for character $this")
 }
 
 fun main() {
