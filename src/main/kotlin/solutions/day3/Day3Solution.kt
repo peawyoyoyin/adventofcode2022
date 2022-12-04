@@ -2,6 +2,7 @@ package solutions.day3
 
 import utils.InputReader
 import utils.map
+import utils.measureAndLogTime
 import java.lang.IllegalArgumentException
 
 fun String.bisect(): Pair<String, String> {
@@ -15,7 +16,7 @@ fun Char.priority() = when (category) {
     else -> throw IllegalArgumentException("cannot find priority for character $this")
 }
 
-fun main() {
+fun main() = measureAndLogTime {
     InputReader.readInput("day3/input.txt")
         .trim()
         .split(System.lineSeparator())
