@@ -3,25 +3,6 @@ package solutions.day4
 import utils.InputReader
 import utils.measureAndLogTime
 
-// start, end inclusive
-data class Range(val start: Int, val end: Int) {
-    infix fun fullyContains(other: Range) = start <= other.start && end >= other.end
-
-    private infix fun overlapsLeftWith(other: Range) = end >= other.start && end <= other.end
-    private infix fun overlapsRightWith(other: Range) = start <= other.end && start >= other.start
-
-    infix fun overlapsWith(other: Range) = this overlapsLeftWith other || this overlapsRightWith other
-            || this fullyContains other || other fullyContains this
-
-    companion object {
-        fun fromString(string: String) =
-            string.split("-")
-                .let {
-                    Range(it[0].trim().toInt(), it[1].trim().toInt())
-                }
-    }
-}
-
 fun String.toRangePair() = split(',')
     .map(Range::fromString)
     .let{ Pair(it[0], it[1]) }
