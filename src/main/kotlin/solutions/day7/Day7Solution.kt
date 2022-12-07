@@ -11,6 +11,15 @@ interface Node {
 data class File(val name: String, override val size: Long): Node
 data class Directory(val name: String, val contents: MutableMap<String, Node>): Node {
     override val size by lazy { contents.values.sumOf { it.size } }
+
+    companion object {
+        fun listAllSubDirectories(directory: Directory): List<Directory> {
+            val subDirectories = directory.contents.values
+                .filterIsInstance<Directory>()
+                .flatMap { listAllSubDirectories(it) }
+            return listOf(directory) +  subDirectories
+        }
+    }
 }
 
 val commandRegex = Regex("\\$ .*")
@@ -87,8 +96,7 @@ fun main() = measureAndLogTime {
 
     val rootDirectory = buildDirectories(lines)
 
-    val threshold = 100000L
-    // part 2
+    val part1SizeThreshold = 100_000L
     val totalDiskSpace = 70_000_000L
     val targetFreeDiskSpace = 30_000_000L
     val currentUsedDiskSpace = rootDirectory.size
@@ -97,19 +105,11 @@ fun main() = measureAndLogTime {
     val spaceNeedToFree = targetFreeDiskSpace - currentFreeSpace
 
     // DFS
-    val allDirectories = mutableListOf<Directory>()
-    val stack = mutableListOf<Directory>()
-
-    stack.add(rootDirectory)
-    while (stack.isNotEmpty()) {
-        val node = stack.removeLast()
-        allDirectories.add(node)
-        stack.addAll(node.contents.values.filterIsInstance<Directory>())
-    }
+    val allDirectories = Directory.listAllSubDirectories(rootDirectory)
 
     // part 1
     allDirectories
-        .filter { it.size <= threshold }
+        .filter { it.size <= part1SizeThreshold }
         .sumOf { it.size }
         .also { println("part 1 ans: $it")}
 
