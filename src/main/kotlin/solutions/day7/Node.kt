@@ -1,6 +1,6 @@
 package solutions.day7
 
-interface Node {
+sealed interface Node {
     val size: Long
 }
 
