@@ -12,7 +12,14 @@ sealed interface Instruction {
             }
         }
     }
+
+    override fun toString(): String
 }
 
-object Noop : Instruction
-class AddX(val param: Int): Instruction
+object Noop : Instruction {
+    override fun toString(): String = "noop"
+}
+
+class AddX(val param: Int): Instruction {
+    override fun toString(): String = "addx $param"
+}

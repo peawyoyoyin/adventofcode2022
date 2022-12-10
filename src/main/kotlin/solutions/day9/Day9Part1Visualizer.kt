@@ -51,6 +51,4 @@ object Day9Part1Visualizer : PApplet() {
     }
 }
 
-fun main() {
-    Day9Part1Visualizer.run()
-}
+fun main() = Day9Part1Visualizer.run()

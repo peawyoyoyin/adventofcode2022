@@ -23,6 +23,4 @@ object Day0Visualizer : PApplet() {
     }
 }
 
-fun main() {
-    Day0Visualizer.run()
-}
+fun main() = Day0Visualizer.run()

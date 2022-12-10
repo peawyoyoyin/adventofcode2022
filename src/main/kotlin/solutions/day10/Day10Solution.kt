@@ -1,20 +1,14 @@
 package solutions.day10
 
-import utils.InputReader
 import utils.measureAndLogTime
 import kotlin.math.abs
 
 fun main() = measureAndLogTime {
-    val instructions = InputReader.readInput("day10/input.txt")
-        .trim()
-        .split(System.lineSeparator())
-        .map(Instruction::parse)
-
     val cyclesToTraces = mutableListOf(20, 60, 100, 140, 180, 220)
 
     var ans = 0
 
-    val cpu = CPU(instructions)
+    val cpu = CPU(Day10Input.instructions)
 
     val pixels = mutableListOf<Boolean>()
     while (cpu.sequence.hasNext()) {
