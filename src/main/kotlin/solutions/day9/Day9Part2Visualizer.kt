@@ -33,7 +33,7 @@ object Day9Part2Visualizer : PApplet() {
 
         ellipseMode(CORNER)
         colorMode(HSB, 255f)
-        for (i in (0..9).reversed()) {
+        for (i in 9 downTo 0) {
             val (x, y) = (logic.knots[i] + offset) * scale
 
             fill(255f/(i+1), 255f, 255f)
