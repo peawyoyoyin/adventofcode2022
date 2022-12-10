@@ -15,7 +15,7 @@ data class Position(val x: Int, val y: Int) {
             Direction.Right -> copy(x = x+1)
         }
 
-    infix fun touching(that: Position) =
+    private infix fun touching(that: Position) =
         (abs(x - that.x) <= 1 && abs(y - that.y) <= 1)
 
     infix fun moveTowards(that: Position) =
