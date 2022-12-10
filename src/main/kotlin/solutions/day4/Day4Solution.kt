@@ -8,9 +8,7 @@ fun String.toRangePair() = split(',')
     .let{ Pair(it[0], it[1]) }
 
 fun main() = measureAndLogTime {
-    val rangePairs = InputReader.readInput("day4/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    val rangePairs = InputReader.readInputLines("day4/input.txt")
         .map { it.toRangePair() }
 
     // part 1

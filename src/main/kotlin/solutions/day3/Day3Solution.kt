@@ -17,9 +17,7 @@ fun Char.priority() = when (category) {
 }
 
 fun main() = measureAndLogTime {
-    InputReader.readInput("day3/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    InputReader.readInputLines("day3/input.txt")
         .let { lines ->
             // part 1
             lines.sumOf { line ->

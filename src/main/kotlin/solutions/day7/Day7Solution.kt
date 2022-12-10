@@ -90,9 +90,7 @@ fun buildDirectories(lines: List<String>): Directory {
 }
 
 fun main() = measureAndLogTime {
-    val lines = InputReader.readInput("day7/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    val lines = InputReader.readInputLines("day7/input.txt")
 
     val rootDirectory = buildDirectories(lines)
 

@@ -3,9 +3,7 @@ package solutions.day9.logic
 import utils.InputReader
 
 object Day9Input {
-    val moves = InputReader.readInput("day9/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    val moves = InputReader.readInputLines("day9/input.txt")
         .map { line ->
             line.split(' ').let {
                 Move(

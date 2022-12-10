@@ -10,4 +10,9 @@ object InputReader {
             .resolve(filename)
             .toFile()
             .readText()
+
+    fun readInputLines(filename: String) =
+        readInput(filename)
+            .trim()
+            .split(System.lineSeparator())
 }

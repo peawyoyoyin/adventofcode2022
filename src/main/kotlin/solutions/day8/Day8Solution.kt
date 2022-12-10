@@ -16,9 +16,7 @@ data class ViewDistance(var toLeft: Int, var toRight: Int, var toTop: Int, var t
 infix fun Int.downTo(end: Int) = (end until this).reversed()
 
 fun main() = measureAndLogTime {
-    val grid = InputReader.readInput("day8/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    val grid = InputReader.readInputLines("day8/input.txt")
         .map { row -> row.toList().map { it.digitToInt() } }
 
     // part 1

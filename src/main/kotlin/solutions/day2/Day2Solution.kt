@@ -4,9 +4,7 @@ import utils.InputReader
 import utils.measureAndLogTime
 
 fun main() = measureAndLogTime {
-    InputReader.readInput("day2/input.txt")
-        .trim()
-        .split(System.lineSeparator())
+    InputReader.readInputLines("day2/input.txt")
         .let { lines ->
             // part 1
             lines
