@@ -7,8 +7,8 @@ fun main() = measureAndLogTime {
     val part1Logic = Part1Logic(Day9Input.moves)
 
     val visitedPositions = mutableSetOf<Position>()
-    while(part1Logic.sequence.hasNext()) {
-        part1Logic.sequence.next()
+    while(part1Logic.hasNext()) {
+        part1Logic.next()
 
         visitedPositions.add(part1Logic.tailPosition)
     }
@@ -18,8 +18,8 @@ fun main() = measureAndLogTime {
     visitedPositions.clear()
     val part2Logic = Part2Logic(Day9Input.moves)
 
-    while (part2Logic.sequence.hasNext()) {
-        part2Logic.sequence.next()
+    while (part2Logic.hasNext()) {
+        part2Logic.next()
 
         visitedPositions.add(part2Logic.knots[9])
     }

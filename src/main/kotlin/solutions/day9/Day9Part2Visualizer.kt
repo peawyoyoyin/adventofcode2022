@@ -42,8 +42,8 @@ object Day9Part2Visualizer : PApplet() {
         }
         colorMode(RGB, 255f)
 
-        if (logic.sequence.hasNext()) {
-            logic.sequence.next()
+        if (logic.hasNext()) {
+            logic.next()
             visitedPositions.add(logic.knots[9])
         }
     }

@@ -11,8 +11,8 @@ fun main() = measureAndLogTime {
     val cpu = CPU(Day10Input.instructions)
 
     val pixels = mutableListOf<Boolean>()
-    while (cpu.sequence.hasNext()) {
-        cpu.sequence.next()
+    while (cpu.hasNext()) {
+        cpu.next()
 
         if (cyclesToTraces.isNotEmpty()) {
             if (cpu.cycle == cyclesToTraces.first()) {

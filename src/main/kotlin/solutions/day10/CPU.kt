@@ -1,6 +1,8 @@
 package solutions.day10
 
-class CPU(instructions: List<Instruction>) {
+import utils.StatefulIterator
+
+class CPU(instructions: List<Instruction>): StatefulIterator<Unit>() {
     var cycle = 0
     var x = 1
     private val instructionsQueue = instructions.toMutableList()
@@ -9,7 +11,7 @@ class CPU(instructions: List<Instruction>) {
     var currentInstruction: Instruction = Noop
     var isExecutingAddX: Boolean = false
 
-    val sequence = iterator {
+    override val underlyingIterator: Iterator<Unit> = iterator {
         while (instructionsQueue.isNotEmpty()) {
             currentInstruction = instructionsQueue.removeFirst()
             when (currentInstruction) {

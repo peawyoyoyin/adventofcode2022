@@ -40,8 +40,8 @@ object Day9Part1Visualizer : PApplet() {
         fill(255f, 0f, 0f)
         ellipse(headX.toFloat(), headY.toFloat(), scale.toFloat(), scale.toFloat())
 
-        if (logic.sequence.hasNext()) {
-            logic.sequence.next()
+        if (logic.hasNext()) {
+            logic.next()
             visitedPositions.add(logic.tailPosition)
         }
     }

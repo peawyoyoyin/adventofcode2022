@@ -134,7 +134,7 @@ object Day10Visualizer : PApplet() {
         drawLitPixels()
         drawCRTLabels()
 
-        if (cpu.sequence.hasNext()) { cpu.sequence.next() }
+        if (cpu.hasNext()) { cpu.next() }
     }
 
     fun run() {
