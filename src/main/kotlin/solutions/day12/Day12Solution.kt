@@ -89,7 +89,7 @@ fun main() = measureAndLogTime {
         pos.adjacentsWithInBounds(maxRows, maxCols)
             .filter { adj ->
                 val (row, col) = adj
-                grid[row][col] canStepTo grid[currentRow][currentCol]&& adj !in visited
+                grid[row][col] canStepTo grid[currentRow][currentCol] && adj !in visited
             }
             .forEach {
                 visited.add(it)
