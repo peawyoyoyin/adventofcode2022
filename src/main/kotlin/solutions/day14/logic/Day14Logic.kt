@@ -1,7 +1,5 @@
 package solutions.day14.logic
 
-import solutions.day14.Coordinate
-import solutions.day14.moveTowards
 import utils.StatefulIterator
 
 abstract class Day14Logic(rockLines: List<List<Coordinate>>) : StatefulIterator<Unit>() {

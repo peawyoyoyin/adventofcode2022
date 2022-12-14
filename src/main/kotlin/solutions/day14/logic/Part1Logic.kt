@@ -1,9 +1,5 @@
 package solutions.day14.logic
 
-import solutions.day14.Coordinate
-import solutions.day14.fallDown
-import solutions.day14.fallLeft
-import solutions.day14.fallRight
 import utils.IteratorUtils.plus
 
 class Part1Logic(rockLines: List<List<Coordinate>>) : Day14Logic(rockLines) {

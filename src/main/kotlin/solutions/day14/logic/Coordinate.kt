@@ -1,4 +1,4 @@
-package solutions.day14
+package solutions.day14.logic
 
 typealias Coordinate = Pair<Int, Int>
 
