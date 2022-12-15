@@ -3,40 +3,19 @@ package solutions.day15
 import common.Range
 import utils.InputReader
 import utils.measureAndLogTime
-import kotlin.IllegalArgumentException
 import kotlin.math.abs
 
 typealias Coordinate = Pair<Int, Int>
 
-val readingPattern = "^Sensor at x=(-?\\d+), y=(-?\\d+): closest beacon is at x=(-?\\d+), y=(-?\\d+)$".toRegex()
-data class Reading(val sensorPosition: Coordinate, val closestBeaconPosition: Coordinate) {
-    companion object {
-        fun parse(rawReading: String): Reading =
-            readingPattern.find(rawReading.trim())?.run {
-                val sensorX = groups[1]?.value?.toInt()
-                    ?: throw IllegalArgumentException("invalid pattern for sensor X in $rawReading")
-                val sensorY = groups[2]?.value?.toInt()
-                    ?: throw IllegalArgumentException("invalid pattern for sensor Y in $rawReading")
-                val closestBeaconX = groups[3]?.value?.toInt()
-                    ?: throw IllegalArgumentException("invalid pattern for beacon X in $rawReading")
-                val closestBeaconY = groups[4]?.value?.toInt()
-                    ?: throw IllegalArgumentException("invalid pattern for beacon Y in $rawReading")
-
-                Reading(sensorPosition = Pair(sensorX, sensorY), closestBeaconPosition = Pair(closestBeaconX, closestBeaconY))
-            } ?: throw IllegalArgumentException("invalid reading pattern $rawReading")
-    }
-}
-
 fun manhattanDistanceBetween(point1: Coordinate, point2: Coordinate)
     = abs(point1.first - point2.first) + abs(point1.second - point2.second)
-
 
 fun findImpossibleXRanges(readings: List<Reading>, targetY: Int): List<Range> {
     // for each sensor:
     //  given sensor S = (sX, sY)
     //  closest beacon B = (bX, bY)
     //  target T = (tX, tY)
-    //      distance to the closest beacon D = md(S, B)
+    //  distance to the closest beacon D = manhattan_distance(S, B)
     //      md(S, T) > D
     //      |sX - tX| + |sY - tY| > D
     //                  |sX - tX| > D - |sY - tY|
