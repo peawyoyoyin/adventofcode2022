@@ -1,6 +1,17 @@
-package solutions.day4
+package common
+
+import kotlin.math.max
+import kotlin.math.min
 
 data class Range(val start: Int, val end: Int) {
+    init {
+        if (start > end) {
+            throw IllegalArgumentException("range start($start) cannot be more than end($end)")
+        }
+    }
+
+    val size = end - start + 1
+
     // start, end inclusive
     infix fun fullyContains(other: Range) = start <= other.start && end >= other.end
 
@@ -10,11 +21,8 @@ data class Range(val start: Int, val end: Int) {
     infix fun overlapsWith(other: Range) = this overlapsLeftWith other || this overlapsRightWith other
             || this fullyContains other || other fullyContains this
 
-    companion object {
-        fun fromString(string: String) =
-            string.split("-")
-                .let {
-                    Range(it[0].trim().toInt(), it[1].trim().toInt())
-                }
-    }
+    operator fun contains(num: Int) = num in start..end
+
+    // here for extensions
+    companion object
 }

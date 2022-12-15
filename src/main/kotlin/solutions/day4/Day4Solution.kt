@@ -1,7 +1,14 @@
 package solutions.day4
 
+import common.Range
 import utils.InputReader
 import utils.measureAndLogTime
+
+fun Range.Companion.fromString(string: String) =
+    string.split("-")
+        .let {
+            Range(it[0].trim().toInt(), it[1].trim().toInt())
+        }
 
 fun String.toRangePair() = split(',')
     .map(Range::fromString)
