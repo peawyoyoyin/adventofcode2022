@@ -32,6 +32,27 @@ fun manhattanDistanceBetween(point1: Coordinate, point2: Coordinate)
 
 
 fun findImpossibleXRanges(readings: List<Reading>, targetY: Int): List<Range> {
+    // for each sensor:
+    //  given sensor S = (sX, sY)
+    //  closest beacon B = (bX, bY)
+    //  target T = (tX, tY)
+    //      distance to the closest beacon D = md(S, B)
+    //      md(S, T) > D
+    //      |sX - tX| + |sY - tY| > D
+    //                  |sX - tX| > D - |sY - tY|
+    //
+    //  if |a| > b then a > b or a < -b
+    //
+    //      sX - tX > D - |sY - tY| -> 1
+    //          or
+    //      sx - tX < - (D - |sY - tY|) -> 2
+    //
+    //      tx < sX - D + |sY - tY| -> 1
+    //      tx > sx + D - |sY - tY| -> 2
+    //
+    //  thus t'X where sX - D + |sY - tY| <= t'X <= sx + D - |sY - tY|
+    //      cannot be beacon
+
     val impossibleXRanges = readings.flatMap {
         val (sensorPosition, beaconPosition) = it
         val (sensorX, sensorY) = sensorPosition
@@ -74,26 +95,6 @@ fun main() = measureAndLogTime {
     val readings = InputReader.readInputLines("day15/input.txt")
         .map(Reading::parse)
 
-    // for each sensor:
-    //  given sensor S = (sX, sY)
-    //  closest beacon B = (bX, bY)
-    //  target T = (tX, tY)
-    //      distance to the closest beacon D = md(S, B)
-    //      md(S, T) > D
-    //      |sX - tX| + |sY - tY| > D
-    //                  |sX - tX| > D - |sY - tY|
-    //
-    //  if |a| > b then a > b or a < -b
-    //
-    //      sX - tX > D - |sY - tY| -> 1
-    //          or
-    //      sx - tX < - (D - |sY - tY|) -> 2
-    //
-    //      tx < sX - D + |sY - tY| -> 1
-    //      tx > sx + D - |sY - tY| -> 2
-    //
-    //  thus t'X where sX - D + |sY - tY| <= t'X <= sx + D - |sY - tY|
-    //      cannot be beacon
     val part1TargetY = 2_000_000
 
     val impossibleXRanges = findImpossibleXRanges(readings, part1TargetY)
@@ -116,5 +117,5 @@ fun main() = measureAndLogTime {
         }
     }
 
-    // TODO automatically compute answere
+    // TODO automatically compute answer
 }

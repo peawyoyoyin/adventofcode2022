@@ -1,6 +1,6 @@
 package solutions.day10
 
-import utils.StatefulIterator
+import common.StatefulIterator
 
 class CPU(instructions: List<Instruction>): StatefulIterator<Unit>() {
     var cycle = 0

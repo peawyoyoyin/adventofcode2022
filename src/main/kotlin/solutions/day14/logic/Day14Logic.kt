@@ -1,6 +1,6 @@
 package solutions.day14.logic
 
-import utils.StatefulIterator
+import common.StatefulIterator
 
 abstract class Day14Logic(rockLines: List<List<Coordinate>>) : StatefulIterator<Unit>() {
     companion object {

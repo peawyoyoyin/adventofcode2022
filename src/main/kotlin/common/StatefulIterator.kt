@@ -1,4 +1,4 @@
-package utils
+package common
 
 // simple wrapper for stateful iterator, useful for suspendable executions
 abstract class StatefulIterator<T>: Iterator<T> {

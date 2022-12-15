@@ -1,6 +1,6 @@
 package solutions.day9.logic
 
-import utils.StatefulIterator
+import common.StatefulIterator
 
 class Part1Logic(private val moves: List<Move>): StatefulIterator<Unit>() {
     var headPosition = Position.origin

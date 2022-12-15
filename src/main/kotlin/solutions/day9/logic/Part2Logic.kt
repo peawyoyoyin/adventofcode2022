@@ -1,6 +1,6 @@
 package solutions.day9.logic
 
-import utils.StatefulIterator
+import common.StatefulIterator
 
 class Part2Logic(private val moves: List<Move>): StatefulIterator<Unit>() {
     val knots = (0..9).map { Position.origin }.toMutableList()
